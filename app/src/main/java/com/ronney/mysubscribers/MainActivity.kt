@@ -13,7 +13,8 @@ class MainActivity: FragmentActivity() {
         setContentView(R.layout.activity_main)
 
         // https://www.youtube.com/watch?v=eMVxhlBsxEk
-
+        // https://github.com/douglasramalho/my-subscribers-app/blob/tutorial-parte-05/app/src/main/res/layout/activity_main.xml
+        
         val navHostFragment = supportFragmentManager.findFragmentById(R.id.nav_host_fragment) as NavHostFragment
         var navController = navHostFragment.navController
         val appBarConfiguration = AppBarConfiguration(navController.graph)
