@@ -18,14 +18,14 @@ class DatabaseDataSource(
     }
 
     override suspend fun deleteSubscriber(id: Long) {
-        subscriberDAO.dekete(id)
+        subscriberDAO.delete(id)
     }
 
     override suspend fun deleteAllSubscribers() {
         subscriberDAO.deleteAll()
     }
 
-    override suspend fun getAllSubscribers(): LiveData<List<SubscriberEntity>> {
+    override fun getAllSubscribers(): LiveData<List<SubscriberEntity>> {
         return subscriberDAO.getAll()
     }
 

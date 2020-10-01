@@ -16,7 +16,7 @@ interface SubscriberDAO {
     suspend fun update(subscriber: SubscriberEntity)
 
     @Query("DELETE FROM subscriber WHERE id = :id")
-    suspend fun dekete(id: Long)
+    suspend fun delete(id: Long)
 
     @Query("DELETE FROM subscriber")
     suspend fun deleteAll()
