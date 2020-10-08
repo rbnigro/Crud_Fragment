@@ -9,7 +9,8 @@
         android:id="@+id/subscriberListFragment"
         android:name="com.ronney.mysubscribers.ui.subscriberlist.SubscriberListFragment"
         android:label="subscriber_list_fragment"
-        tools:layout="@layout/subscriber_list_fragment" />
+        tools:layout="@layout/subscriber_list_fragment" >
+    </fragment>
 
     <fragment
         android:id="@+id/subscriberFragment"
