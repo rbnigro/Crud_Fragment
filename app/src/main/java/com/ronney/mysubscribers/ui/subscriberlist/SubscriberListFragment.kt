@@ -13,6 +13,7 @@ import com.ronney.mysubscribers.R
 import com.ronney.mysubscribers.data.db.AppDatabase
 import com.ronney.mysubscribers.data.db.dao.SubscriberDAO
 import com.ronney.mysubscribers.data.db.entity.SubscriberEntity
+import com.ronney.mysubscribers.extension.navigateWithAnimations
 import com.ronney.mysubscribers.repository.DatabaseDataSource
 import com.ronney.mysubscribers.repository.SubscriberRepository
 import com.ronney.mysubscribers.ui.subscriber.SubscriberViewModel
@@ -52,7 +53,7 @@ class SubscriberListFragment : Fragment(R.layout.subscriber_list_fragment) {
 
     private fun configureViewListeners() {
         fabAddSubscriber.setOnClickListener{
-            findNavController().navigate(R.id.subscriberFragment)
+            findNavController().navigateWithAnimations(R.id.subscriberFragment)
         }
     }
 }
