@@ -7,6 +7,7 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.findNavController
 import com.google.android.material.snackbar.Snackbar
 import com.ronney.mysubscribers.R
 import com.ronney.mysubscribers.data.db.AppDatabase
@@ -46,6 +47,9 @@ class SubscriberFragment : Fragment(R.layout.subscriber_fragment) {
                     clearFields()
                     hideKeyboard()
                     requireView().requestFocus()
+
+                    // voltar para a tela anterior
+                    findNavController().popBackStack()
                 }
             }
         }

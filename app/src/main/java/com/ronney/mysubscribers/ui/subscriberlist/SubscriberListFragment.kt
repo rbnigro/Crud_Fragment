@@ -41,7 +41,6 @@ class SubscriberListFragment : Fragment(R.layout.subscriber_list_fragment) {
 
     private fun observerViewModelEvents() {
         viewModel.allSubscribersEvent.observe(viewLifecycleOwner) { allSubscribers->
-
             val subscriberListAdapter = SubscriberListAdapter(allSubscribers)
 
             with(recycler_subscribers) {
@@ -49,6 +48,11 @@ class SubscriberListFragment : Fragment(R.layout.subscriber_list_fragment) {
                 adapter = subscriberListAdapter
             }
         }
+    }
+
+    override fun onResume() { // chamada após o onStart
+        super.onResume()
+        viewModel.getSubscribers()
     }
 
     private fun configureViewListeners() {

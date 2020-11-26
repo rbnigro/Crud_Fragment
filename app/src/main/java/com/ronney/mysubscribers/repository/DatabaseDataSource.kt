@@ -1,6 +1,5 @@
 package com.ronney.mysubscribers.repository
 
-import androidx.lifecycle.LiveData
 import com.ronney.mysubscribers.data.db.dao.SubscriberDAO
 import com.ronney.mysubscribers.data.db.entity.SubscriberEntity
 
@@ -25,7 +24,7 @@ class DatabaseDataSource(
         subscriberDAO.deleteAll()
     }
 
-    override fun getAllSubscribers(): LiveData<List<SubscriberEntity>> {
+    override suspend fun getAllSubscribers(): List<SubscriberEntity> {
         return subscriberDAO.getAll()
     }
 
