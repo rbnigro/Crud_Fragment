@@ -1,6 +1,7 @@
 package com.ronney.mysubscribers.extension
 
 import androidx.navigation.NavController
+import androidx.navigation.NavDirections
 import androidx.navigation.NavOptions
 import com.ronney.mysubscribers.R
 
@@ -16,4 +17,11 @@ fun NavController.navigateWithAnimations(
         animation: NavOptions = slideLeftOptions
 ) {
     this.navigate(destinationId, null, animation)
+}
+
+fun NavController.navigateWithAnimations(
+    directions: NavDirections,
+    animation: NavOptions = slideLeftOptions
+) {
+    this.navigate(directions, animation)
 }

@@ -8,6 +8,7 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
+import androidx.navigation.fragment.navArgs
 import com.google.android.material.snackbar.Snackbar
 import com.ronney.mysubscribers.R
 import com.ronney.mysubscribers.data.db.AppDatabase
@@ -32,9 +33,18 @@ class SubscriberFragment : Fragment(R.layout.subscriber_fragment) {
         }
     }
 
+    private val args: SubscriberFragmentArgs by navArgs()
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         // depois que a view for criada
         super.onViewCreated(view, savedInstanceState)
+
+        // caso esteja preenchido.. é atualização
+        args.subscriber?.let { subscriber ->
+            button_subscriber.text = getString(R.string.subscriber_button_update)
+            input_name.setText(subscriber.name)
+            input_email.setText(subscriber.email)
+        }
 
         observerEvents()
         setListeners()
@@ -49,6 +59,11 @@ class SubscriberFragment : Fragment(R.layout.subscriber_fragment) {
                     requireView().requestFocus()
 
                     // voltar para a tela anterior
+                    findNavController().popBackStack()
+                }
+                is SubscriberViewModel.SubscriberState.Updated -> {
+                    clearFields()
+                    hideKeyboard()
                     findNavController().popBackStack()
                 }
             }
@@ -77,8 +92,7 @@ class SubscriberFragment : Fragment(R.layout.subscriber_fragment) {
             val name = input_name.text.toString()
             val email = input_email.text.toString()
 
-            viewModel.addSubscriber(name, email)
+            viewModel.addOrUpdateSubscriber(name, email, args.subscriber?.id ?: 0)
         }
     }
-
 }
